@@ -1,0 +1,63 @@
+================================================================================
+SCOUTIQ EMPIRICAL AUDIT & FIGURE VERIFICATION
+================================================================================
+
+[1] UNSEEN-PLAYER CONFIRMATION SENSITIVITY (DESIGN B)
+Unique players in Development partition (Block 2): 687
+Unique players in Confirmation partition (Block 3): 691
+Overlapping players appearing in both partitions: 573
+Completely unseen players in Confirmation partition: 118
+Unseen Confirmation n transitions: 118
+  Calibrated Persistence RMSE: 0.4157
+  Raw Persistence RMSE:        0.4766
+  Random Forest RMSE:          0.3987 (error reduction vs cal pers: 4.08%)
+  Ridge Regression RMSE:       0.4136
+
+[2] DESIGN A FORWARD TRANSITIONS AND ATHLETE CLUSTERING
+Total Design A Forward transitions (11 test seasons 2009/10-2019/20): 35
+Unique individual forward players: 13
+  Lionel Andrés Messi Cuccittini: 11 transitions
+  Luis Alberto Suárez Díaz: 5 transitions
+  Pedro Eliezer Rodríguez Ledesma: 5 transitions
+  Neymar da Silva Santos Junior: 3 transitions
+  Alexis Alejandro Sánchez Sánchez: 2 transitions
+  David Villa Sánchez: 2 transitions
+  Cristian Tello Herrera: 1 transitions
+  Antoine Griezmann: 1 transitions
+  Bojan Krkíc Pérez: 1 transitions
+  Martin Braithwaite Christensen: 1 transitions
+  Francisco Alcácer García: 1 transitions
+  Munir El Haddadi Mohamed: 1 transitions
+  Ousmane Dembélé: 1 transitions
+
+[3] LONGITUDINAL FIXTURES PER CAMPAIGN (STATS BOMB PANEL)
+Fixtures per campaign:
+  Season 2004/05: 7 league matches
+  Season 2005/06: 17 league matches
+  Season 2006/07: 26 league matches
+  Season 2007/08: 27 league matches
+  Season 2008/09: 31 league matches
+  Season 2009/10: 35 league matches
+  Season 2010/11: 33 league matches
+  Season 2011/12: 37 league matches
+  Season 2012/13: 32 league matches
+  Season 2013/14: 31 league matches
+  Season 2014/15: 38 league matches
+  Season 2015/16: 38 league matches
+  Season 2016/17: 34 league matches
+  Season 2017/18: 36 league matches
+  Season 2018/19: 34 league matches
+  Season 2019/20: 33 league matches
+  Season 2020/21: 35 league matches
+Total fixtures across 17 seasons (2004/05-2020/21): 524
+Average fixtures per season overall: 30.82
+Test seasons evaluated (2009/10-2019/20, 11 seasons): min=31, max=38, mean=34.64
+
+[4] EXPOSURE THRESHOLD SENSITIVITY IN DESIGN B (9-MW BLOCKS)
+Threshold | Dev n | Conf n | Pooled n | Conf Pers RMSE | Conf RF RMSE | Error Reduction
+--------------------------------------------------------------------------------
+180 mins  | 979   | 1026   | 2005     | 0.4520         | 0.4286       | 5.18%
+270 mins  | 823   | 852    | 1675     | 0.4454         | 0.4129       | 7.30%
+360 mins  | 691   | 691    | 1382     | 0.4477         | 0.4122       | 7.93%
+450 mins  | 541   | 532    | 1073     | 0.4299         | 0.3982       | 7.37%
+600 mins  | 320   | 300    | 620      | 0.4090         | 0.3999       | 2.22%

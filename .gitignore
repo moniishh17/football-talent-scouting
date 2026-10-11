@@ -24,6 +24,7 @@ data/research/
 
 # Local logs
 *.log
+!reports/review_figures_verification.log
 
 .vscode/
 
