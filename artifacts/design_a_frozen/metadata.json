@@ -1,0 +1,30 @@
+{
+ "model": "ridge|pi|level",
+ "family": "ridge",
+ "feature_set": "pi",
+ "formulation": "level",
+ "tuned_params": {
+  "ridge__alpha": 10.0
+ },
+ "seed": 20260101,
+ "training_pairs": 173,
+ "training_target_years": [
+  2005,
+  2020
+ ],
+ "latest_scouting_season_start_year": 2020,
+ "min_minutes": 450.0,
+ "reference_group_col": "position_group",
+ "conformal_halfwidth_80": 0.4114952065233868,
+ "conformal_halfwidth_90": 0.54257965275668,
+ "conformal_calibration_n": 143,
+ "selection_rule": "lowest pooled RMSE in the development period (test years 2009-2014)",
+ "interpretation": "development-selected model is a linear persistence model on the performance index; richer feature sets did not demonstrably improve held-out RMSE (see reports/05_results.md).",
+ "panel_hash_sha256": "679f43fafb6de13f26663827ca04f99929a5816f1d39da3554164d4248d169e4",
+ "versions": {
+  "python": "3.14.7",
+  "sklearn": "1.9.1",
+  "pandas": "3.0.6",
+  "numpy": "2.5.2"
+ }
+}

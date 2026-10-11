@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# OS / Office lock files
+~$*
+.DS_Store
+Thumbs.db
+
+# Test side-effect folder created by the legacy tests
+archive/
+
+# CSVs are not committed (generated tables, candidate lists, crosswalks) ...
+*.csv
+# ... except the two small legacy fixtures required by the existing tests/offline demo
+!data/statsbomb_world_cup_2022_players.csv
+!data/la_liga_player_seasons.csv
+
+# Research working data: raw-derived cache, processed panels (contain Transfermarkt-derived
+# ages/valuations), audits, logs. Rebuild with the commands in README.md.
+data/research/
+
+# Local logs
+*.log
+
+.vscode/
+

@@ -1,0 +1,65 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Event-driven scouting rankings and validation-based method selection.
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 120
+    MemorySize: 1024
+    Architectures:
+      - x86_64
+
+Resources:
+  ScoutingDataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  ScoutingRankerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: aws.lambda_function.lambda_handler
+      Description: Ranks players, selects the best-supported method, and publishes research outputs.
+      Environment:
+        Variables:
+          MIN_MINUTES: '180'
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action: s3:GetObject
+              Resource: !Sub '${ScoutingDataBucket.Arn}/incoming/*'
+            - Effect: Allow
+              Action: s3:PutObject
+              Resource: !Sub '${ScoutingDataBucket.Arn}/results/*'
+      Events:
+        PlayerCsvUploaded:
+          Type: S3
+          Properties:
+            Bucket: !Ref ScoutingDataBucket
+            Events: s3:ObjectCreated:*
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: incoming/
+                  - Name: suffix
+                    Value: .csv
+
+Outputs:
+  ScoutingBucketName:
+    Description: Upload prepared player-season CSVs under incoming/; download rankings from results/.
+    Value: !Ref ScoutingDataBucket
+  ScoutingRankerFunctionName:
+    Description: Lambda function that runs the three-ranking pipeline.
+    Value: !Ref ScoutingRankerFunction

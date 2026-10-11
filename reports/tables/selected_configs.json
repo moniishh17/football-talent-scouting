@@ -1,0 +1,23 @@
+{
+ "A": {
+  "overall": "ridge|pi|level",
+  "ridge": "ridge|pi|level",
+  "enet": "enet|pi|delta",
+  "rf": "rf|pi+profile+agepos+exposure+context+history|level",
+  "lgbm": "lgbm|pi|delta"
+ },
+ "B": {
+  "overall": "rf|pi+profile+agepos+exposure+context+league+history|level",
+  "ridge": "ridge|pi+profile+agepos+exposure+context+league+history|level",
+  "enet": "enet|pi+profile+agepos+exposure+context+league+history|level",
+  "rf": "rf|pi+profile+agepos+exposure+context+league+history|level",
+  "lgbm": "lgbm|pi+profile|level"
+ },
+ "V": {
+  "overall": "rf|perf+agepos+valuation+trend",
+  "ridge": "ridge|perf+agepos+valuation+trend",
+  "enet": "enet|perf+agepos+valuation",
+  "rf": "rf|perf+agepos+valuation+trend",
+  "lgbm": "lgbm|perf+agepos+valuation+trend"
+ }
+}
